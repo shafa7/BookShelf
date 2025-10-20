@@ -52,6 +52,31 @@
             <h2>We'd Love to Hear From You</h2>
             <form class="contact-form" action="#" method="POST">
                 
+                <h3 class="form-subheader">Tell Us About Your Favourite Book!</h3>
+
+                <div class="form-group">
+                    <label for="fav-book">Favourite Book Title</label>
+                    <input type="text" id="fav-book" name="fav-book">
+                </div>
+                
+                <div class="form-group rating-group">
+                    <label for="rating">Your Rating (Out of 5)</label>
+                    <input type="number" id="rating" name="rating" min="0" max="5" step="0.5">
+                </div>
+
+                <div class="form-group file-upload-group">
+                    <label>Upload Book Cover Image</label>
+                    <input type="file" id="cover-upload" accept="image/*" class="file-upload-input" name="cover-image">
+                    <label for="cover-upload" class="file-upload-label">Choose Cover Image</label>
+                    <div id="image-preview" class="image-preview-box">
+                        <p>No Image Selected</p>
+                    </div>
+                </div>
+
+                <hr class="form-separator">
+
+                <h3 class="form-subheader">Your Message</h3>
+
                 <div class="form-group">
                     <label for="name">Your Name</label>
                     <input type="text" id="name" name="name" required>
@@ -78,8 +103,10 @@
     </main>
     
     <div id="success-popup" class="popup-message">
-        <p>Thank you for submitting!</p>
-        <button class="popup-close-btn">Close</button>
+        <div class="popup-content">
+            <p>Thank you for submitting!</p>
+            <button class="popup-close-btn">Close</button>
+        </div>
     </div>
 
     <footer>

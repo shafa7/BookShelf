@@ -1,5 +1,7 @@
+// JAVASCRIPT FOR RESPONSIVE NAVIGATION, FORM VALIDATION, AND FILE PREVIEW
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Nav Bar Elements
+    // Nav Bar Elements (UNCHANGED)
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     const overlay = document.getElementById('overlay');
@@ -11,33 +13,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const successPopup = document.getElementById('success-popup');
     const popupCloseBtn = document.querySelector('.popup-close-btn');
 
+    // NEW: File Upload Elements
+    const coverUploadInput = document.getElementById('cover-upload');
+    const imagePreviewBox = document.getElementById('image-preview');
+    const fileUploadLabel = document.querySelector('.file-upload-label');
+
+
     // ----------------------------------------------------
-    // --- 1. RESPONSIVE NAVIGATION MENU TOGGLE LOGIC ---
+    // --- 1. RESPONSIVE NAVIGATION MENU TOGGLE LOGIC (UNCHANGED) ---
     // ----------------------------------------------------
 
-    /** Toggles the mobile menu open/closed state. */
     function toggleMenu() {
         const isActive = navMenu.classList.toggle('active');
         menuToggle.classList.toggle('active');
         overlay.classList.toggle('active');
-
         menuToggle.setAttribute('aria-expanded', isActive);
-        // Prevent background scrolling when menu is open
         document.body.style.overflow = isActive ? 'hidden' : 'auto';
-        
-        // Ensure mobile dropdown is reset/closed when main menu closes
         if (!isActive && dropdownItem) {
             dropdownItem.classList.remove('open');
         }
     }
 
-    // Event Listeners for Navigation
     menuToggle.addEventListener('click', toggleMenu);
     overlay.addEventListener('click', toggleMenu);
 
-    // Close menu when a standard navigation link is clicked (on mobile/tablet)
     navMenu.querySelectorAll('a').forEach(link => {
-        // Exclude the 'Shop' link from closing the menu
         if (link.id !== 'shopDropdownToggle') {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mobile Dropdown Toggle (Click/Tap handler for "Shop")
     if (shopDropdownToggle) {
         shopDropdownToggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 1024) {
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle resize to automatically reset menu to desktop state
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 1025) {
             navMenu.classList.remove('active');
@@ -73,21 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ----------------------------------------------------
-    // --- 2. FORM VALIDATION & POPUP LOGIC ---
+    // --- 2. FORM VALIDATION & POPUP LOGIC (UNCHANGED) ---
     // ----------------------------------------------------
 
     contactForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
         if (this.checkValidity()) {
-            // 1. Show the success popup with fade-in effect
             successPopup.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Lock background scroll
+            document.body.style.overflow = 'hidden';
 
-            // 2. Clear the form
             this.reset();
+            
+            // NEW: Also reset the custom file upload preview after submission
+            imagePreviewBox.style.backgroundImage = 'none';
+            imagePreviewBox.querySelector('p').style.display = 'flex'; // Show 'No Image Selected' text
+            fileUploadLabel.textContent = 'Choose Cover Image';
+            
         } else {
-            // Trigger the native browser error messages
             this.reportValidity();
         }
     });
@@ -95,15 +96,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close popup handlers
     popupCloseBtn.addEventListener('click', () => {
         successPopup.classList.remove('show');
-        document.body.style.overflow = 'auto'; // Restore background scroll
+        document.body.style.overflow = 'auto';
     });
 
-    // Close popup when clicking outside (on the dark overlay part)
     successPopup.addEventListener('click', (e) => {
-        // Check if the click target is the popup container itself
         if (e.target.id === 'success-popup') {
             successPopup.classList.remove('show');
             document.body.style.overflow = 'auto';
         }
     });
+
+
+    // ----------------------------------------------------
+    // --- 3. FILE UPLOAD PREVIEW LOGIC (UPDATED) ---
+    // ----------------------------------------------------
+
+    coverUploadInput.addEventListener('change', function() {
+        const file = this.files[0];
+        
+        if (file) {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    // 1. Set the image as the background of the preview box
+                    imagePreviewBox.style.backgroundImage = `url(${e.target.result})`;
+                    
+                    // 2. Hide the 'No Image Selected' text
+                    imagePreviewBox.querySelector('p').style.display = 'none';
+                    
+                    // 3. Update the label text
+                    fileUploadLabel.textContent = file.name.length > 25 ? 
+                                                 file.name.substring(0, 22) + '...' : 
+                                                 file.name;
+                };
+                
+                reader.readAsDataURL(file);
+            } else {
+                // Handle non-image files
+                alert('Only image files are supported for cover upload.');
+                this.value = ''; // Clear the file input
+                imagePreviewBox.style.backgroundImage = 'none';
+                imagePreviewBox.querySelector('p').style.display = 'flex'; // Show default text
+                fileUploadLabel.textContent = 'Choose Cover Image';
+            }
+        } else {
+            // No file selected (e.g., user canceled)
+            imagePreviewBox.style.backgroundImage = 'none';
+            imagePreviewBox.querySelector('p').style.display = 'flex';
+            fileUploadLabel.textContent = 'Choose Cover Image';
+        }
+    });
+
 });

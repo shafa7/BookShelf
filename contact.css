@@ -307,14 +307,29 @@ nav {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6); 
     z-index: 1000;
+    /* Centering the content wrapper (the .popup-content div) */
+    display: none; /* Initially hidden */
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
-    /* Initially hidden and uses opacity transition for fade-in */
-    display: none; 
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+
+.popup-content {
+    /* Uses primary color as the text color inside the box */
+    color: var(--primary-color);
+    
+    /* Box appearance */
+    background-color: var(--secondary-color); /* Cream background */
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+    /* Layout for message and button inside the box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .popup-message.show {
@@ -333,15 +348,27 @@ nav {
     margin-bottom: 15px;
 }
 
+.popup-content p {
+    background: none; /* Remove background, it's now on the container */
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space above the button */
+    padding: 0; /* Remove old padding */
+    box-shadow: none; /* Remove old shadow */
+}
+
 .popup-close-btn {
     padding: 10px 25px;
     background-color: var(--primary-color); 
     color: var(--secondary-color);
     border: none;
-    border-radius: 44px; /* Rounded button for better look */
+    border-radius: 44px; 
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s;
+    /* Ensure the button has correct layout properties */
+    display: block; 
 }
 
 .popup-close-btn:hover {
@@ -498,4 +525,86 @@ footer {
         opacity: 1 !important;
         visibility: visible !important;
     }
+}
+
+/* =========================================
+   6. FORM ADDITIONS & FILE UPLOAD STYLES
+   ========================================= */
+
+.form-subheader {
+    color: var(--text-white); 
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.form-separator {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 30px 0;
+}
+
+.rating-group input {
+    max-width: 100px; /* Constrain the width of the rating input */
+    text-align: center;
+}
+
+/* File Upload Specific Styles */
+.file-upload-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Style the custom button (label) */
+.file-upload-label {
+    display: block; /* Takes full width of the container */
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #ebcfba; /* Lighter cream on hover */
+}
+
+/* Style the preview box */
+.image-preview-box {
+    width: 100%;
+    max-width: 200px; /* Fixed max width for a cleaner cover shape */
+    height: 250px; /* Taller height for cover image */
+    border: 2px dashed var(--secondary-color);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 15px auto 0 auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
+    font-style: italic;
+    font-size: 14px;
+}
+
+.image-preview-box p {
+    color: inherit;
+    background: none;
+    padding: 10px;
 }
