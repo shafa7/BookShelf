@@ -1,0 +1,657 @@
+/* =========================================
+   1. CORE VARIABLES & BASE STYLES
+   ========================================= */
+:root {
+    /* User's Color Palette */
+    --primary-color: #be6674; /* Rose/Red Accent */
+    --secondary-color: #f3e0d1; /* Cream Background */
+    --text-dark: #333333;
+    --text-light: #f4ede8; /* Used for subtitles on dark BG */
+    
+    /* Responsive & Animation */
+    --nav-transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+    --desktop-bp: 1025px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* STICKY FOOTER SETUP */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-color); /* Body background */
+    color: var(--text-dark);
+}
+
+/* Content wrapper to push the footer down */
+main {
+    flex-grow: 1;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION (Desktop First)
+   ========================================= */
+header {
+    background-color: var(--secondary-color);
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-head h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Desktop Menu (The main horizontal bar) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px; 
+    align-items: center;
+}
+
+.nav-links > li > a {
+    padding: 10px 0; 
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Subtle Hover Effect (Underline) */
+.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: var(--primary-color); 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease-out; 
+    transform-origin: center; 
+}
+
+.nav-links > li > a:hover::after {
+    transform: scaleX(1);
+}
+
+/* --- Desktop Dropdown Styling (Visible on Hover) --- */
+.dropdown {
+    position: relative; 
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    list-style: none;
+    padding: 10px 0;
+    min-width: 180px; 
+    background-color: var(--secondary-color); 
+    border: 1px solid rgba(190, 102, 116, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* HIDDEN on desktop initially, shown via hover */
+    z-index: 20; 
+    overflow: hidden; 
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown Link Reset */
+.dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+    white-space: nowrap;
+    color: var(--primary-color); 
+    font-weight: 400;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(190, 102, 116, 0.1);
+}
+
+/* =========================================
+   3. HAMBURGER ICON & OVERLAY
+   ========================================= */
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    z-index: 100;
+    padding: 5px;
+    background: none;
+    border: none;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Transform hamburger to close icon (X) */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Overlay for background fade */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 80;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* --- NEW: STAGGERED LINK ANIMATION KEYFRAMES --- */
+@keyframes slideInLink {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+
+/* =========================================
+   4. HERO SECTION STYLES
+   ========================================= */
+.hero-section{
+    position: relative;
+    width: 100%;
+    height: 85vh; 
+    overflow: hidden;
+    background: linear-gradient(135deg, #d8a48f 0%, #bb8588 50%, #efebce 100%);
+}
+
+/* Hero Text Container */
+.hero-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; 
+    pointer-events: none; 
+}
+
+.staggered-title {
+    font-size: clamp(35px, 8vw, 60px); 
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+    color: var(--text-light); 
+}
+
+.staggered-title span {
+    display: block; 
+    opacity: 0;
+    animation: zoomFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; 
+    -webkit-animation: zoomFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.staggered-title .italic {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: lowercase;
+    font-size: 55%; 
+    margin-top: -1vw;
+    margin-bottom: -1vw;
+}
+
+/* Staggered animation timing (preserves original timing) */
+.staggered-title .word-1 { animation-delay: 0.2s; }
+.staggered-title .word-2 { animation-delay: 0.8s; }
+.staggered-title .word-3 { animation-delay: 1.6s; }
+
+@keyframes zoomFadeIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* =========================================
+   5. NEW & BEST SELLERS SECTION (RESPONSIVE GRID)
+   ========================================= */
+.new-best {
+    background-color: #bb8c94;
+    padding: 40px 20px;
+}
+
+.new-best h2 {
+    text-align: center;
+    padding-bottom: 30px;
+    font-size: clamp(28px, 5vw, 36px);
+    font-family: 'Georgia', serif;
+    color: var(--text-light);
+}
+
+.books-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.books-grid {
+    /* Desktop/Tablet: 2 column layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* --- Book Card (Desktop Default) --- */
+.book-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Align top */
+    padding: 30px; 
+    margin: 0; /* Managed by grid gap */
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.book-card img {
+    max-width: 150px; 
+    height: 220px;
+    flex-shrink: 0;
+    margin-right: 25px; 
+    box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    object-fit: cover; 
+    width: 100%; /* Important for mobile stack */
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left; 
+}
+
+.book-tag {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.book-details h3 {
+    font-family: 'Georgia', serif; 
+    font-size: 24px; 
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin: 5px 0 10px 0;
+}
+
+.edition-tag {
+    font-size: 10px;
+    padding: 4px 8px;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    display: inline-block;
+    color: #444444;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.book-details p {
+    font-family: 'Inter', sans-serif; 
+    font-size: 15px; 
+    line-height: 1.5;
+    color: #555555;
+    margin: 0 0 20px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allows buttons to wrap on tiny screens */
+}
+
+.book-button {
+    padding: 10px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.book-button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* =========================================
+   6. PICK GENRE CTA
+   ========================================= */
+.pick-genre {
+    background: linear-gradient(to bottom, #d8a48f 0%, #bb8588 100%);
+    text-align: center;
+    padding: 80px 20px;
+    width: 100%;
+}
+
+.pick-genre h2 {
+    color: #ffffff;
+    font-size: clamp(30px, 6vw, 40px);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.pick-genre p {
+    color: #ffffff;
+    font-size: clamp(16px, 3vw, 18px);
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.pick-genre button {
+    background-color: transparent; 
+    color: #ffffff; 
+    border: 2px solid #ffffff; 
+    border-radius: 4px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pick-genre button:hover {
+    background-color: #ffffff; 
+    color: var(--primary-color);
+}
+.pick-genre button a{
+    color: inherit;
+}
+
+
+/* =========================================
+   7. FOOTER & PDF PREVIEW
+   ========================================= */
+footer {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-top: auto; /* Crucial for sticky footer */
+}
+
+#pdfPreview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(243, 224, 209, 0.95); /* Semi-transparent cream */
+    display: none;
+    z-index: 150; /* Above everything */
+    overflow-y: auto;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+#pdfPreview .book-button {
+    margin-top: 20px;
+}
+
+/* =========================================
+   8. MEDIA QUERIES (Responsiveness)
+   ========================================= */
+
+/* --- Tablet & Mobile Layout (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    /* Show Hamburger and Mobile Menu Styles */
+    nav {
+        padding: 15px 20px;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* Hide desktop horizontal menu items */
+    .nav-links {
+        /* Off-canvas menu properties */
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%; 
+        max-width: 100%; /* CHANGED: Full width for mobile menu */
+        height: 100%;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 80px;
+        z-index: 90;
+        align-items: flex-start;
+        gap: 0; 
+
+        /* Initial state of the menu container */
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: var(--nav-transition);
+        box-shadow: none; /* Removed shadow for full-width menu */
+    }
+
+    .nav-links.active {
+        /* Active state: Slide in from the right */
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(190, 102, 116, 0.1);
+        
+        /* Initial hidden state for slide-in animation */
+        opacity: 0; 
+        transform: translateY(20px);
+        transition: none; 
+    }
+
+    .nav-links.active li {
+        /* Apply animation when menu is active */
+        opacity: 1;
+        transform: translateY(0);
+        animation: slideInLink 0.4s ease forwards;
+    }
+
+    /* Staggered animation delay using nth-child */
+    .nav-links.active li:nth-child(1) { animation-delay: 0.1s; } 
+    .nav-links.active li:nth-child(2) { animation-delay: 0.2s; } 
+    .nav-links.active li:nth-child(3) { animation-delay: 0.3s; } 
+    .nav-links.active li:nth-child(4) { animation-delay: 0.4s; } 
+    .nav-links.active li:nth-child(5) { animation-delay: 0.5s; } 
+
+
+    .nav-links li a {
+        padding: 15px 40px; 
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .nav-links li a:hover::after {
+        transform: scaleX(0); /* Hide underline on mobile/tablet */
+    }
+
+    /* --- Mobile Dropdown Handling: On Click/Tap --- */
+    .dropdown-menu {
+        position: static; 
+        transform: none;
+        width: 100%;
+        border: none;
+        background-color: rgba(190, 102, 116, 0.05); 
+        box-shadow: none;
+        
+        /* Hiding state using transitions */
+        padding: 0; 
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+    }
+
+    /* Class added by JavaScript on tap */
+    .dropdown.open .dropdown-menu {
+        max-height: 200px; /* SHOWN state */
+        padding: 10px 0; 
+        opacity: 1;
+    }
+    
+    .dropdown-menu a {
+        padding: 10px 40px 10px 60px; /* Indent nested links */
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    /* --- Book Card Stack Layout (Tablet/Mobile) --- */
+    .books-grid {
+        /* Force single column layout */
+        grid-template-columns: 1fr;
+    }
+
+    .book-card {
+        /* Stack image and details vertically */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .book-card img {
+        max-width: 60%;
+        height: auto;
+        margin: 0 auto 20px auto; 
+    }
+
+    .book-details {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .edition-tag, .book-tag {
+        margin: 5px auto 10px auto;
+    }
+    
+    .button-group {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* --- Mobile Phone Specific Adjustments (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .hero-section {
+        height: 70vh;
+    }
+    .main-head h1 {
+        font-size: 24px;
+    }
+    
+    .book-card img {
+        max-width: 90%;
+    }
+}
+
+/* --- Desktop (min-width: 1025px) --- */
+@media (min-width: 1025px) {
+    .menu-toggle, .overlay {
+        display: none;
+    }
+    /* Ensure desktop dropdown works on hover */
+    .dropdown:hover .dropdown-menu {
+          display: block;
+          max-height: none; /* Resetting max-height for desktop */
+          padding: 10px 0;
+    }
+    
+    /* Ensure desktop links aren't staggered or translated */
+    .nav-links li {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}

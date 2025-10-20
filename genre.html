@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shelf | Genre</title>
+    <link rel="stylesheet" href="genre.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <nav>
+            <div class="main-head">
+                <h1>Book Shelf</h1>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="genre.html">Genre</a></li>
+                <li class="dropdown">
+                    <a href="#" id="shopDropdownToggle">Shop</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="https://www.amazon.in/" target="_blank" rel="noopener noreferrer">Amazon</a>
+                        </li>
+                        <li>
+                            <a href="https://www.bookofthemonth.com/" target="_blank" rel="noopener noreferrer">Book of the Month</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="slider-section">
+            <div class="genre">
+                <h2 align="center">Thriller</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/212421066-famous-last-words?from_search=true&from_srp=true&qid=7ZEaYCbC4w&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/FamousLastWords_200x300-23zpf4V7.jpg" alt="Famous Last Words"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/208503280-the-boyfriend?from_search=true&from_srp=true&qid=e2oHkUVcv0&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheBoyfriend_200x300.jpg" alt="The Boyfriend"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214151565-count-my-lies?from_search=true&from_srp=true&qid=Qsk5ljheE1&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/CountMyLies_2xK69XfV.jpg" alt="Count My Lies"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/211004079-a-killing-cold?ref=nav_sb_ss_1_10" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/AKillingCold_200x300.jpg" alt="A Killing Cold"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/164444179-first-lie-wins?ref=nav_sb_ss_1_14" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/FirstLieWins_200x300.jpg" alt="First Lie Wins"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/219833252-king-of-ashes?ref=nav_sb_ss_1_13" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/KingOfAshes_YpjQ7272.jpg" alt="King Of Ashes"></a></li>
+                        
+                    </ul>
+                </div>
+                
+                <button id="next-btn" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            <div class="genre">
+                <h2 align="center">Historical Fictions</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-2" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-2" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/62919732-lady-tan-s-circle-of-women?ref=nav_sb_ss_1_8" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/LadyTansCircleOfWomen_200x300.jpg" alt="Lady Tans Circle Of Women"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214151202-broken-country?from_search=true&from_srp=true&qid=XWAz7oN5sf&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/BrokenCountry_49ccfP47.jpg" alt="Broken Country"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/127305853-the-women?ref=nav_sb_ss_1_23" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheWomen_200x300.jpg" alt="The Women"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/212378278-six-days-in-bombay?ref=nav_sb_ss_1_18" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/SixDaysInBombay_4aIL9LI1.jpg" alt="Six Days In Bombay"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/218695909-what-kind-of-paradise?from_search=true&from_srp=true&qid=3grAiBGnpb&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/WhatKindOfParadise_5N8U42d8.jpg" alt="What Kind Of Paradise"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/199798217-the-lion-women-of-tehran?ref=nav_sb_ss_1_11" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheLionWomenOfTehran_200x300.jpg" alt="The Lion Women Of Tehran"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-2" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            
+            <div class="genre">
+                <h2 align="center">Romance</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-3" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-3" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214269328-promise-me-sunshine?from_search=true&from_srp=true&qid=AVSdcgKY5M&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/PromiseMeSunshine_3UHl3Pp5.jpg" alt="Promise Me Sunshine"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214175139-you-between-the-lines?ref=nav_sb_ss_1_17" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/YouBetweenTheLines_200x300-im58E6gM.jpg" alt="You Between The Lines"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/201245798-one-star-romance?from_search=true&from_srp=true&qid=xiQE1G1EFz&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/OneStarRomance_200x300.jpg" alt="One Star Romance"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/217387810-the-love-haters?ref=nav_sb_ss_1_14" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheLoveHaters_2X3d6K.jpg" alt="The Love Haters"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/217961558-it-s-getting-hot-in-here?ref=nav_sb_ss_1_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/ItsGettingHotInHere_200x300-53KHu69f.jpg" alt="Its Getting Hot In Here"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/213243908-first-time-caller?from_search=true&from_srp=true&qid=JkHd4Y2uFa&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/FirstTimeCaller_200x300-vN9N26eT.jpg" alt="First Time Caller"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-3" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            
+            <div class="genre">
+                <h2 align="center">Fantasy</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-4" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-4" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/207611551-the-teller-of-small-fortunes?ref=nav_sb_ss_1_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheTellerOfSmallFortunes_200x300.jpg" alt="The Teller Of Small Fortunes"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/60217777-rebel-witch?from_search=true&from_srp=true&qid=gvRtseExCu&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/RebelWitch_200x300-p4ZtW917.jpg" alt="Rebel Witch"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/210395729-our-infinite-fates?from_search=true&from_srp=true&qid=tbjcVxIO6S&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/OurInfiniteFates_YH0l0a3W.jpg" alt="Our Infinite Fates"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/215020997-bury-our-bones-in-the-midnight-soil?from_search=true&from_srp=true&qid=2Z9n2YYqHy&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/BuryOurBonesInTheMidnightSoil_219pkQ6N.jpg" alt="Bury Our Bones In The Midnight Soil"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/199927030-the-lost-story?from_search=true&from_srp=true&qid=LAUii8hMLv&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheLostStory_200x300.jpg" alt="The Lost Story"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/217245572-silver-elite?ref=nav_sb_ss_1_12" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/SilverElite_0Ff6t5.jpg" alt="Silver Elite"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-4" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            
+            <div class="genre">
+                <h2 align="center">Literary Fictions</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-5" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-5" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/208931300-intermezzo?ref=nav_sb_ss_1_9" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/Intermezzo_200x300.jpg" alt="Intermezzo"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214175053-a-season-of-light?from_search=true&from_srp=true&qid=UbOTwfW8Iy&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/ASeasonOfLight_200x300-11Z5tSc9.jpg" alt="A Season Of Light"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/215749072-liquid?ref=nav_sb_ss_1_6" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/Liquid_qbGJm685.jpg" alt="Liquid"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/203579186-the-book-of-george?ref=nav_sb_ss_1_18" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheBookOfGeorge_200x300.jpg" alt="The Book Of George"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/62929342-real-americans?ref=nav_sb_ss_1_14" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/RealAmericans_200x300.jpg" alt="Real Americans"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/199534613-margo-s-got-money-troubles?from_search=true&from_srp=true&qid=VAAEFRIe1D&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/MargosGotMoneyTroubles_200x300.jpg" alt="Margos Got Money Troubles"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-5" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            
+            <div class="genre">
+                <h2 align="center">Mystery</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-6" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-6" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/50892433-one-by-one?ref=nav_sb_ss_2_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/OneByOne_200x300.jpg" alt="One By One"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/203956647-we-solve-murders?ref=nav_sb_ss_1_16" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/WeSolveMurders_200x300.jpg" alt="We Solve Murders"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/199798460-the-return-of-ellie-black?ref=nav_sb_ss_1_25" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheReturnOfEllieBlack_200x300.jpg" alt="The Return Of Ellie Black"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/215153740-all-the-colors-of-the-dark?from_search=true&from_srp=true&qid=IR11H7aPuP&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/AllTheColorsOfTheDark_200x300.jpg" alt="All The Colors Of The Dark"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/219401057-every-sweet-thing-is-bitter?ref=nav_sb_ss_1_27" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/EverySweetThingIsBitter_F4l2v7Fc.jpg" alt="Every Sweet Thing Is Bitter"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/217506549-the-ghostwriter?ref=nav_sb_ss_1_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheGhostwriter_FN899QgG.jpg" alt="The Ghostwriter"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-6" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            
+            <div class="genre">
+                <h2 align="center">Contemporary Fictions</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-7" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-7" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/211004089-wild-dark-shore?ref=nav_sb_ss_1_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/WildDarkShore_oD2d4RQ2.jpg" alt="Wild Dark Shore"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/123087802-the-last-love-note?ref=nav_sb_ss_1_17" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheLastLovenote_200x300.jpg" alt="The Last Love Note"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214312329-what-does-it-feel-like?ref=nav_sb_ss_1_22" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/WhatDoesItFeelLike_200x300.jpg" alt="What Does It Feel Like"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/214268974-jane-and-dan-at-the-end-of-the-world?from_search=true&from_srp=true&qid=atVz1vj9Dl&rank=1" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/JaneAndeDanAtTheEndOfTheWorld_885ZDv6q.jpg" alt="Jane And Dan At The End Of The World"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/198902277-the-wedding-people?ref=nav_sb_ss_1_18" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheWeddingPeople_200x300.jpg" alt="The Wedding People"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/211399784-the-favorites?ref=nav_sb_ss_1_13" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheFavorites_200x300.jpg" alt="The Favorites"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-7" class="slider-btn">
+                    &gt; </button>
+            </div>
+            
+            
+            <div class="genre">
+                <h2 align="center">Horror</h2>
+            </div>
+            <div class="slider-container">
+                <button id="prev-btn-8" class="slider-btn disabled">
+                    &lt; </button>
+                
+                <div class="image-track-wrapper">
+                    <ul id="image-track-8" class="image-track">
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/101145269-my-darling-girl?ref=nav_sb_ss_1_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/MyDarlingGirl_200x300.jpg" alt="My Darling Girl"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/199757490-incidents-around-the-house?ref=nav_sb_ss_1_26" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/IncidentsAroundTheHouse_200x300.jpg" alt="Incidents Around The House"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/60652964-white-horse?ref=nav_sb_ss_2_11" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/WhiteHorse_200x300.jpg" alt="White Horse"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/32796253-final-girls?ref=nav_sb_ss_1_11" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/FinalGirls.jpg" alt="Final Girls"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/55169043-the-shadows?ref=nav_sb_ss_1_16" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheShadows_200x300.jpg" alt="The Shadows"></a></li>
+                        <li class="slide"><a href="https://www.goodreads.com/book/show/41837243-lock-every-door?ref=nav_sb_ss_1_15" class="book-link" target="_blank"><img src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/LockEveryDoor_200x300.jpg" alt="Lock Every Door"></a></li>
+                    </ul>
+                </div>
+                
+                <button id="next-btn-8" class="slider-btn">
+                    &gt; </button>
+            </div>
+
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Book Shelf. All rights reserved.</p>
+    </footer>
+
+    <script src="genre.js"></script>
+</body>
+</html>

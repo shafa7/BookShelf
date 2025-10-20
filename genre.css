@@ -1,0 +1,432 @@
+/* =========================================
+   1. CORE VARIABLES & BASE STYLES
+   ========================================= */
+:root {
+    /* User's Color Palette */
+    --primary-color: #be6674; /* Rose/Red Accent */
+    --secondary-color: #f3e0d1; /* Cream Background */
+    --text-dark: #333333;
+    --text-light: #f4ede8; 
+    
+    /* Responsive & Animation */
+    /* Requested transition properties */
+    --nav-transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out; 
+    --desktop-bp: 1025px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Using your original body background color */
+    background-color: var(--primary-color); 
+    color: var(--text-dark);
+    font-family: sans-serif;
+}
+
+main {
+    flex-grow: 1;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+/* =========================================
+   2. HEADER & DESKTOP NAVIGATION
+   ========================================= */
+header {
+    background-color: var(--secondary-color);
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    max-width: 1200px; /* Centered layout */
+    margin: 0 auto;
+}
+
+.main-head h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Desktop Menu (The main horizontal bar) */
+.nav-links {
+    list-style: none;
+    display: flex; /* Horizontal layout for desktop */
+    gap: 40px; 
+    align-items: center;
+}
+
+.nav-links > li > a {
+    padding: 10px 0; 
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Subtle Hover Effect (Underline) */
+.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: var(--primary-color); 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease-out; 
+    transform-origin: center; 
+}
+
+.nav-links > li > a:hover::after {
+    transform: scaleX(1);
+}
+
+/* --- Desktop Dropdown Styling --- */
+.dropdown {
+    position: relative; 
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    list-style: none;
+    padding: 10px 0;
+    min-width: 180px; 
+    background-color: var(--secondary-color); 
+    border: 1px solid rgba(190, 102, 116, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden on desktop, shown via hover */
+    z-index: 20; 
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+    white-space: nowrap;
+    color: var(--primary-color); 
+    font-weight: normal;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(190, 102, 116, 0.1);
+}
+
+/* =========================================
+   3. HAMBURGER ICON & MOBILE MENU STYLES
+   ========================================= */
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    z-index: 100;
+    padding: 5px;
+    background: none;
+    border: none;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Transform hamburger to close icon (X) */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Overlay for background fade (when menu is open) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Background fade effect */
+    z-index: 80;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* Requested background fade transition */
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out; 
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Mobile link entrance animation */
+@keyframes slideInLink {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+
+/* =========================================
+   4. EXISTING SLIDER & CONTENT STYLES
+   ========================================= */
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+}
+
+.image-track-wrapper {
+    width: 600px;
+    overflow: hidden;
+}
+
+.image-track {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 200px; /* Forces each slide to be exactly 200px wide */
+    text-align: center;
+}
+
+.slide img {
+    width: auto; 
+    height: auto; 
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.slider-btn {
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: opacity 0.3s;
+    color: var(--primary-color);
+}
+
+.slider-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.slide .book-link {
+    display: block; 
+    text-decoration: none;
+    transition: transform 0.2s ease-out;
+}
+
+.slide .book-link:hover {
+    transform: translateY(-5px); 
+    opacity: 0.95; 
+}
+
+.genre h2 {
+    color: var(--secondary-color);
+    font-size: 28px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Footer (Preserved) */
+footer {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--primary-color);
+    margin-top: auto; 
+}
+
+
+/* =========================================
+   5. MEDIA QUERIES (Responsiveness)
+   ========================================= */
+
+/* --- Tablet & Mobile Layout (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    
+    /* Show Hamburger Menu */
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* Mobile Menu Container (Off-canvas) */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0; 
+        width: 100%; 
+        max-width: 100%; /* CHANGED: Menu now takes up the entire width */
+        height: 100%;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 80px;
+        z-index: 90;
+        align-items: flex-start;
+        gap: 0; 
+
+        /* Initial state: off-screen, invisible, no pointer events */
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: var(--nav-transition); /* Applies requested transition */
+    }
+
+    .nav-links.active {
+        /* Active state: Slide in, fade in, enable interactions */
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        /* Removed box-shadow since it covers the full width */
+        box-shadow: none; 
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(190, 102, 116, 0.1);
+        
+        /* Prepare for staggered slide-in effect */
+        opacity: 0; 
+        transform: translateY(20px);
+        transition: none; 
+    }
+
+    .nav-links.active li {
+        /* Apply staggered link animation */
+        opacity: 1;
+        transform: translateY(0);
+        animation: slideInLink 0.4s ease forwards;
+    }
+
+    /* Staggered animation delay */
+    .nav-links.active li:nth-child(1) { animation-delay: 0.1s; } 
+    .nav-links.active li:nth-child(2) { animation-delay: 0.2s; } 
+    .nav-links.active li:nth-child(3) { animation-delay: 0.3s; } 
+    .nav-links.active li:nth-child(4) { animation-delay: 0.4s; } 
+    .nav-links.active li:nth-child(5) { animation-delay: 0.5s; } 
+
+
+    .nav-links li a {
+        padding: 15px 40px; 
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    /* Hide desktop underline effect on mobile */
+    .nav-links li a:hover::after {
+        transform: scaleX(0); 
+    }
+
+    /* --- Mobile Dropdown Handling: On Click/Tap --- */
+    .dropdown-menu {
+        position: static; 
+        transform: none;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background-color: rgba(190, 102, 116, 0.05); 
+        
+        /* Animation setup using max-height */
+        padding: 0; 
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+    }
+
+    /* Class added by JavaScript on tap */
+    .dropdown.open .dropdown-menu {
+        max-height: 200px; 
+        padding: 10px 0; 
+        opacity: 1;
+    }
+    
+    .dropdown-menu a {
+        padding: 10px 40px 10px 60px; /* Indent nested links */
+        font-size: 14px;
+    }
+    
+    /* --- Slider Adjustments for Mobile --- */
+    .image-track-wrapper {
+        width: 400px; 
+    }
+    .slide {
+        flex: 0 0 200px; 
+    }
+}
+
+/* --- Mobile Phone Specific Adjustments (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .main-head h1 {
+        font-size: 24px;
+    }
+
+    /* .nav-links no longer needs this, as max-width: 100% is set above. */
+
+    /* Further reduce slider visibility */
+    .image-track-wrapper {
+        width: 300px; 
+    }
+    .slide {
+        flex: 0 0 150px; 
+    }
+}

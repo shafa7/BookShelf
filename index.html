@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Shelf | Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+
+    <header>
+        <nav>
+            <div class="main-head">
+                <h1>Book Shelf</h1>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="genre.html">Genre</a></li>
+                <li class="dropdown">
+                    <a href="#" id="shopDropdownToggle">Shop</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="https://www.amazon.in/" target="_blank" rel="noopener noreferrer">Amazon</a>
+                        </li>
+                        <li>
+                            <a href="https://www.bookofthemonth.com/" target="_blank" rel="noopener noreferrer">Book of the Month</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-text-container">
+                <h1 class="staggered-title">
+                    <span class="word-1">DISCOVER</span>
+                    <span class="word-2 italic">your next</span>
+                    <span class="word-3">READ</span>
+                </h1>
+            </div>
+        </section>
+
+        <section class="new-best">
+            <div class="books-container">
+                <h2>New & Best Sellers</h2>
+                <div class="books-grid">
+                    <div class="book-card">
+                        <img
+                            src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1739047379i/222765064.jpg"
+                            alt="Red City Cover"
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x220/be6674/f3e0d1?text=Book';"
+                        />
+                        <div class="book-details">
+                            <span class="book-tag">Fantasy</span>
+                            <h3>Red City</h3>
+                            <span class="edition-tag">Limited Edition</span>
+                            <p>
+                                Welcome to the gritty, magical world of Angel City, where power
+                                takes just as much as it gives.
+                            </p>
+                            <div class="button-group">
+                                <a
+                                    href="https://www.goodreads.com/book/show/222376533-red-city?ref=nav_sb_ss_1_8"
+                                    class="book-button"
+                                    target="_blank"
+                                >See details</a>
+                                <button 
+                                    class="book-button sample-btn" 
+                                    onclick="openSample('Red City.pdf')">
+                                    Read a sample
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card">
+                        <img
+                            src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/NeverOver_xO8d6yA6.jpg"
+                            alt="Never Over"
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x220/be6674/f3e0d1?text=Book';"
+                        />
+                        <div class="book-details">
+                            <span class="book-tag">Romance</span>
+                            <h3>Never Over</h3>
+                            <span class="edition-tag">Early Release</span>
+                            <p>
+                                What should you do when your songwriting creative juices stop
+                                flowing? Sign up to get your heart broken, of course.
+                            </p>
+                            <div class="button-group">
+                            <a
+                                href="https://www.goodreads.com/book/show/222376762-never-over?ac=1&from_search=true&qid=0ZfAccZfHG&rank=3"
+                                class="book-button"
+                                target="_blank"
+                            >See details</a>
+                            <button class="book-button sample-btn" onclick="openSample('neverover.pdf')">Read a sample</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img
+                            src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheHauntingOfPaynesHollow_RT1k69A5.jpg"
+                            alt="The Haunting Of Paynes Hollow"
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x220/be6674/f3e0d1?text=Book';"
+                        />
+                        <div class="book-details">
+                            <span class="book-tag">Paranormal Thriller</span>
+                            <h3>The Haunting Of Paynes Hollow</h3>
+                            <p>
+                                What should be an idyllic homecoming turns into a horror made
+                                for Halloween when the past refuses to stay in the past.
+                            </p>
+                            <div class="button-group">
+                            <a
+                                href="https://www.goodreads.com/book/show/222377103-the-haunting-of-paynes-hollow?ref=nav_sb_ss_1_29"
+                                class="book-button"
+                                target="_blank"
+                            >See details</a>
+                            <button class="book-button sample-btn" onclick="openSample('haunting.pdf')">Read a sample</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-card">
+                        <img
+                            src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/Hazelthorn_Akn27z9q.jpg"
+                            alt="Hazelthorn"
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x220/be6674/f3e0d1?text=Book';"
+                        />
+                        <div class="book-details">
+                            <span class="book-tag">YA Gothic</span>
+                            <h3>Hazelthorn</h3>
+                            <span class="edition-tag">Early Release</span>
+                            <p>
+                                Mysteries, lies, and deceit grow out of control (literally) in
+                                this unsettling, atmospheric horror.
+                            </p>
+                            <div class="button-group">
+                            <a
+                                href="https://www.goodreads.com/book/show/220909040-hazelthorn?from_search=true&from_srp=true&qid=BjqiOtTDnJ&rank=1"
+                                class="book-button"
+                                target="_blank"
+                            >See details</a>
+                            <button class="book-button sample-btn" onclick="openSample('hazelthorn.pdf')">Read a sample</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card">
+                        <img
+                            src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheSecondChanceCinema_dGs9j25O.jpg"
+                            alt="The Second Chance Cinema"
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x220/be6674/f3e0d1?text=Book';"
+                        />
+                        <div class="book-details">
+                            <span class="book-tag">Magical Realism</span>
+                            <h3>The Second Chance Cinema</h3>
+                            <span class="edition-tag">Debut</span>
+                            <p>
+                                Now playing: Your fiancé’s emotional baggage, up on the big
+                                screen. Pack your popcorn and your tissues.
+                            </p>
+                            <div class="button-group">
+                            <a
+                                href="https://www.goodreads.com/book/show/224003451-the-second-chance-cinema?ref=nav_sb_ss_1_24"
+                                class="book-button"
+                                target="_blank"
+                            >See details</a>
+                            <button class="book-button sample-btn" onclick="openSample('secondchance.pdf')">Read a sample</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="book-card">
+                        <img
+                            src="https://static.bookofthemonth.com/cdn-cgi/image/format=auto,width=640/https://static.bookofthemonth.com/covers/list/TheTenYearAffair_9F62ye0C.jpg"
+                            alt="The Ten Year Affair"
+                            onerror="this.onerror=null; this.src='https://placehold.co/150x220/be6674/f3e0d1?text=Book';"
+                        />
+                        <div class="book-details">
+                            <span class="book-tag">Literary Fiction</span>
+                            <h3>The Ten Year Affair</h3>
+                            <span class="edition-tag">Early Release</span>
+                            <p>
+                                This witty story of two couples in small-town New York asks:
+                                Does cheating count if it’s only in your daydreams?
+                            </p>
+                            <div class="button-group">
+                            <a
+                                href="https://www.goodreads.com/book/show/224003127-the-ten-year-affair?ref=nav_sb_ss_1_19"
+                                class="book-button"
+                                target="_blank"
+                            >See details</a>
+                            <button class="book-button sample-btn" onclick="openSample('tenyear.pdf')">Read a sample</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pick-genre">
+            <h2>Choose anything.</h2>
+            <p>Pick your book from your favourite genre.</p>
+            <button><a href="genre.html">Genre</a></button>
+        </section>
+        
+        <div id="pdfPreview" style="display:none; text-align:center;">
+            <h2 style="color:var(--primary-color); margin-bottom: 20px;">Sample Preview</h2>
+            <iframe id="pdfFrame" width="90%" height="90%" style="border:1px solid var(--primary-color); border-radius:8px; background-color: white;"></iframe>
+            <button onclick="closePDF()" class="book-button" style="background-color: var(--primary-color); color: var(--secondary-color);">Close Preview</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Book Shelf. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
