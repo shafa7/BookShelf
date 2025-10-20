@@ -222,7 +222,7 @@ nav {
 }
 
 .image-track-wrapper {
-    width: 610px;
+    width: 55%;
     overflow: hidden;
 }
 
@@ -231,7 +231,7 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 5px;
+    gap: 2rem;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -407,7 +407,7 @@ footer {
     }
     
     .image-track {
-        gap: 5px; 
+        gap: 2rem; 
     }
 
     /* --- Slider Adjustments for Mobile --- */
